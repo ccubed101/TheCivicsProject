@@ -1,0 +1,69 @@
+<div style="display:grid; background-color:cyan; grid-template-columns: 50% 50%; grid-template-rows: 200px 581px; align-content: center; text-align: center">
+
+  <div style="background-color: red; grid-column: 1 / span 2">
+    <div>Marquee</div>
+    <div>
+      <ul>
+        <li [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
+          <a [routerLink]='["/home"]'>
+            <span class='glyphicon glyphicon-home'></span> Home
+          </a>
+        </li>
+        <li [routerLinkActive]='["link-active"]'>
+          <a [routerLink]="[{ outlets: { secondary: ['counter'] } } ]">
+            <span class='glyphicon glyphicon-th-list'></span> Counter
+          </a>
+        </li>
+        <li [routerLinkActive]='["link-active"]'>
+          <a [routerLink]='["/fetch-data"]'>
+            <span class='glyphicon glyphicon-th-list'></span> Fetch data
+          </a>
+        </li>
+        <li [routerLinkActive]='["link-active"]'>
+          <a [routerLink]='["/primary-panel"]'>
+            <span class='glyphicon'></span>Load "Feature1Module" from "src/app/views/feature1-module/feature1.module.ts" into "primary" panel
+          </a>
+        </li>
+        <li [routerLinkActive]='["link-active"]'>
+          <a [routerLink]="[{ outlets: { secondary: ['secondary-panel'] } } ]">
+            <span class='glyphicon'></span>Load "Feature2Module" from "src/app/views/feature2-module/feature2.module.ts" into "secondary" panel
+          </a>
+        </li>
+        <li [routerLinkActive]='["link-active"]'>
+          <a [routerLink]='["/no-lazy-load-panel"]'>
+            <span class='glyphicon'></span>Load "NoLazyLoadModule" from "src/app/views/no-lazy-load-module/no-lazy-load.module.ts" into "primary" panel
+          </a>
+        </li>
+        <!--<li [routerLinkActive]='["link-active"]'>
+          <a [routerLink]="[{ outlets: { primary: ['path'], outlet-name: ['path'] } } ]">
+            <span class='glyphicon glyphicon-th-list'></span>Commands Panel
+          </a>
+        </li>-->
+      </ul>
+    </div>
+  </div>
+
+  <div>
+    <router-outlet></router-outlet>
+  </div>
+
+  <div style="background-color: lightblue">
+    <router-outlet name="secondary"></router-outlet>
+  </div>
+
+</div>
+
+
+
+
+
+<!--<div class='container-fluid'>
+  <div class='row'>
+    <div class='col-sm-3'>
+      <app-nav-menu></app-nav-menu>
+    </div>
+    <div class='col-sm-9 body-content'>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>-->

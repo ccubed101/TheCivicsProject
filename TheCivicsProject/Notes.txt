@@ -1,0 +1,8 @@
+﻿Notes
+=====
+
+This application is a shell that 
+1. contains implementations of various features of the Angular development platform.
+2. showcases a structure for an Angular based project that draws from the following sources:
+   A. https://medium.com/@michelestieven/organizing-angular-applications-f0510761d65a.
+   B. https://medium.com/@motcowley/angular-folder-structure-d1809be95542

@@ -1,0 +1,20 @@
+﻿Notes on Migrations
+===================
+>> To add a migration use the following command at a command prompt in the directory that contains the .csproj file:
+
+   dotnet ef migrations add <name of migration> --context DataDbContext
+
+   Two files will be added to the Data\Migrations\TheCivicsProject directory for the migration.
+		<time stamp>_<name of migration>.cs
+		<time stamp>_<name of migration>.Designer.cs
+
+	Make additions to the Up() and Down() methods of the .cs file.
+
+>> Once additions have been made to the <time stamp>_<name of migration>.cs file then execute the following at a 
+   command prompt in the directory that contains the .csproj file:
+
+   dotnet ef database update --context DataDbContext
+
+   This will apply the changes specified in the <time stamp>_<name of migration>.cs file to the database.  If
+   this is the first migration then the database itself will be created and the __EFMigrationHistory table will be 
+   created.  Finally the the migration itself will be applied to the database.
