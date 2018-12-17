@@ -8,7 +8,7 @@ import { Feat2Comp2Component } from './feat2-comp2-component/feat2-comp2.compone
 @NgModule({
   imports: [
     CommonModule,
-    Feature2RoutingModule,
+      Feature2RoutingModule,
   ],
   declarations: [
     Feat2Comp1Component,
