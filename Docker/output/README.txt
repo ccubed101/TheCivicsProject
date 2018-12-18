@@ -1,0 +1,1 @@
+Any output of the pipeline processes should be written/stored in this directory.
