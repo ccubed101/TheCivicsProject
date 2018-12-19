@@ -15,7 +15,7 @@
 #	docker run -it --rm -v '<Full path to directory on host>:<Full path to directory in container>' --name <desired name of container> <Name of image>
 #
 #	Example:
-#		docker run --rm -v 'D:\pipelines\the-civics-project:c:\project' --name tcp-build tcp-build-image:1.0.0
+#		docker run --rm -v 'D:\pipelines:c:\pipelines' --name tcp-build tcp-build-image:1.0.0
 #		docker run --rm -v 'D:\Code Projects\TheCivicsProject:c:\Project' --name tcp-build tcp-build-image:1.0.0
 # 		docker run --rm -v 'D:\Code Projects\TheCivicsProject:c:\Project' --name tcp-build tcp-build-image:1.0.0 'tcp-build.bat'			('tcp-build.bat' is not strictly necessary as last line in this Dockerfile specified same batch file.)
 #		docker run --rm -v 'D:\Code Projects\TheCivicsProject:c:\Project' -it --name tcp-build tcp-build-image:1.0.0 cmd					(-it is not strictly necessary.  Behavior will be different but will not make a difference.)
@@ -46,6 +46,13 @@ COPY --from=dev-env nodejs nodejs
 # Bring along Git to the new image.
 RUN mkdir "C:/Program Files/Git"
 COPY --from=dev-env ["C:\\\\Program Files\\\\Git", "C:\\\\Program Files\\\\Git"]
+
+# Add NuGet configruation file.  (Not sure if this is necessary.  It is only added for 'dotnet restore'...which 
+# is not working with, or without, the presence of the configuration file.  See tcp-build.cmd.)
+RUN mkdir %AppData%\NuGet
+COPY nuget.config c:\users\containeruser\appdata\roaming\nuget\nuget.config
+# It would seem the the line below would be more practical than the line above.  But for some reason the line below does not work.
+#COPY nuget.config %AppData%\NuGet\nuget.config
 
 # Modify the 'Path' environment variable so that when 'dotnet build' is executed it will be able to find Nodejs.
 # It would be nice to do something like 'ENV Path $Path;C:\nodejs'.  But this does not work.  $Path appears to be empty.

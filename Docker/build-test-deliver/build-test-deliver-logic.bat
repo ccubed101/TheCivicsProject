@@ -15,8 +15,6 @@ ECHO findstr /C:"Build succeeded." "Docker\output.txt"
 findstr /C:"Build succeeded." "Docker\output.txt"
 
 if %errorlevel% equ 0 (
-
-	Docker\output.txt > stdout
 	
 	REM Install 'karma-chrome-launcher' and 'puppeteer' into the repository in this container.
 	ECHO install karma-chrome-launcher puppeteer

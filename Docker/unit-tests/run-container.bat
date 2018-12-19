@@ -1,0 +1,2 @@
+REM This is the batch file that is called when the tcp-build docker image needs to be run.
+CMD /S /C docker run --rm -v 'D:\pipelines\the-civics-project\TheCivicsProject\ClientApp:c:\project' --name tcp-unit-tests tcp-unit-tests-image:1.0.0
