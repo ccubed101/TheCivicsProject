@@ -2,24 +2,30 @@ param([String]$configuration="Debug")
 
 $CurrentWorkingDirectory = Convert-Path .
 
-docker run --rm -v $CurrentWorkingDirectory":c:\project" --name tcp-build tcp-build-image:1.0.0
+# Need the path to the directory that contains this script file (which must be in the project root directory).
+# The following works in PowerShell v3 only.
+#$PathToProjectRoot = $PSScriptRoot
+# The following works in PowerShell v2 and v3.
+$PathToProjectRoot = Split-Path -Parent -Path $MyInvocation.MyCommand.Definition
 
-$PathToOuputFile = "Docker\output\build-output.txt"
+docker run --rm -v $currentworkingdirectory":c:\project-root" --name tcp-build tcp-build-image:1.0.0
 
-Find /C "Build succeeded." $PathToOuputFile
+$pathtoouputfile = "docker\output\build-output.txt"
 
-if ($LASTEXITCODE -ne 0) {
-    Notepad $PathToOuputFile
+find /c "build succeeded." $pathtoouputfile
+
+if ($lastexitcode -ne 0) {
+    notepad $pathtoouputfile
     exit
 } 
 
-docker run --rm -v $CurrentWorkingDirectory":c:\project" --name tcp-unit-tests tcp-unit-tests-image:1.0.0
-
-$PathToOuputFile = "Docker\output\unit-tests-output.txt"
-
-Find /C "Failed" $PathToOuputFile
-
-if ($LASTEXITCODE -eq 0) {
-    Notepad $PathToOuputFile
-    exit
-} 
+#docker run --rm -v $currentworkingdirectory":c:\project" --name tcp-unit-tests tcp-unit-tests-image:1.0.0
+#
+#$pathtoouputfile = "docker\output\unit-tests-output.txt"
+#
+#find /c "failed" $pathtoouputfile
+#
+#if ($lastexitcode -eq 0) {
+#    notepad $pathtoouputfile
+#    exit
+#} 
