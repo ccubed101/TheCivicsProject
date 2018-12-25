@@ -1,8 +1,8 @@
 REM This batch file should be copied into the tcp-build image when the tcp-build image is built.
 REM This batch file should be executed immdiately after the tcp-build image is run.
 
-REM Navigate to the docker volumne that is the mapped to the directory on disk that contains all the pipelines.
-cd pipelines
+REM Navigate to the docker volumne that is mapped to the directory on disk that contains all the pipelines.
+cd project-root
 
 REM Setup for Git operations by telling Git who you are.  (This may, or may not be machine or developer dependent.)
 git config --global user.name ccubed101
