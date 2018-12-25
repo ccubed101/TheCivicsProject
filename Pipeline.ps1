@@ -13,7 +13,7 @@ if ($LASTEXITCODE -ne 0) {
     exit
 } 
 
-docker run --rm -v $CurrentWorkingDirectory'\TheCivicsProject\ClientApp:c:\project' --name tcp-unit-tests tcp-unit-tests-image:1.0.0
+docker run --rm -v $CurrentWorkingDirectory":c:\project" --name tcp-unit-tests tcp-unit-tests-image:1.0.0
 
 $PathToOuputFile = "Docker\output\unit-tests-output.txt"
 
