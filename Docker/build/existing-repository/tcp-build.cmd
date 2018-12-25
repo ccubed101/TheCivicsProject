@@ -8,30 +8,30 @@ REM Setup for Git operations by telling Git who you are.  (This may, or may not 
 git config --global user.name ccubed101
 git config --global user.email ccubed101@gmail.com
 
-if exist the-civics-project (
+REM if exist TheCivicsProject (
 
-	REM Must navigate to a Git repository for Git to function correctly.
-	cd the-civics-project
+	REM REM Must navigate to a Git repository for Git to function correctly.
+	REM cd the-civics-project
 	
 	REM Update local repository from remote GitHub repository.
 	git pull https://github.com/ccubed101/TheCivicsProject master
 	
-) else (
+REM ) else (
 
-	REM This route is currently unusable.  See below.
+	REM REM This route is currently unusable.  See below.
 
-	REM Project is not present so it has to be cloned from GitHub.com.
-	git clone https://github.com/ccubed101/TheCivicsProject the-civics-project
+	REM REM Project is not present so it has to be cloned from GitHub.com.
+	REM git clone https://github.com/ccubed101/TheCivicsProject the-civics-project
 	
-	REM Must navigate to a Git repository for Git to function correctly.
-	cd the-civics-project
+	REM REM Must navigate to a Git repository for Git to function correctly.
+	REM cd the-civics-project
 	
-	REM Get NuGet packages.
-	REM THIS DOES NOT WORK!  It appears that it may be a bug in Docker when using a bind mount to the host machine.
-	REM See https://github.com/dotnet/dotnet-docker/issues/592
-	REM So for the time being the 'dotnet restore' command will have to be executed manually on the host machine.
-	dotnet restore -v n
-)
+	REM REM Get NuGet packages.
+	REM REM THIS DOES NOT WORK!  It appears that it may be a bug in Docker when using a bind mount to the host machine.
+	REM REM See https://github.com/dotnet/dotnet-docker/issues/592
+	REM REM So for the time being the 'dotnet restore' command will have to be executed manually on the host machine.
+	REM dotnet restore -v n
+REM )
 
 REM Build the application
 del Docker\output\build-output.txt
