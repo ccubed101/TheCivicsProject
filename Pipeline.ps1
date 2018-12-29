@@ -31,11 +31,16 @@ Write-host 'find /c "Build succeeded." $pathtoouputfile'
 find /c "Build succeeded." $PathToOuputFile
 
 if ($lastexitcode -ne 0) {
+	Write-host "Build failed."
 	Write-host "PS notepad $pathtoouputfile"
     notepad $PathTOuputFile
 	Write-host "PS exit"
     exit
 } 
+
+Write-host
+Write-host "Build succeeded."
+Write-host
 
 Write-host "docker run --rm -v $currentworkingdirectory":c:\project" --name tcp-unit-tests tcp-unit-tests-image:1.0.0"
 docker run --rm -v $currentworkingdirectory":c:\project" --name tcp-unit-tests tcp-unit-tests-image:1.0.0
@@ -46,10 +51,15 @@ $PathToOuputFile = "docker\output\unit-tests-output.txt"
 find /c "FAILED " $PathToOuputFile
 
 if ($lastexitcode -eq 0) {
+	Write-host "Unit tests failed."
 	Write-host "PS notepad $PathToOuputFile"
     notepad $PathToOuputFile
 	Write-host "PS exit"
     exit
 } 
 
+Write-host 
+Write-host "Unit tests succeeded."
+
+Write-host
 Write-host ---------- $MyInvocation.MyCommand.Name "("$MyInvocation.MyCommand.Path")" ----------
