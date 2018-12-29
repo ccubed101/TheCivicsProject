@@ -12,7 +12,7 @@ docker run --rm -v $currentworkingdirectory":c:\project-root" --name tcp-build t
 
 $pathtoouputfile = "docker\output\build-output.txt"
 
-find /c "build succeeded." $pathtoouputfile
+find /c "Build succeeded." $pathtoouputfile
 
 if ($lastexitcode -ne 0) {
     notepad $pathtoouputfile
