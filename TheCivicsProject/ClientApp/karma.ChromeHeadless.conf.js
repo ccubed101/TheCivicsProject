@@ -7,7 +7,7 @@
 // Following 2 line required if you want to use "headless" chrome (acutally Chromium).
 const puppeteer = require('puppeteer');
 process.env.CHROME_BIN = puppeteer.executablePath();
-const isDocker = require('is-docker');
+//const isDocker = require('is-docker');
 
 module.exports = function (config) {
   config.set({
