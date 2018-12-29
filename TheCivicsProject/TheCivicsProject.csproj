@@ -29,7 +29,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="ClientApp\testing\file.ts" />
+    <None Remove="ClientApp\src\testing\activated-route-stub.ts" />
     <None Remove="ClientApp\src\app\app-routing.module.ts" />
     <None Remove="ClientApp\src\app\app.server.module.ts" />
     <None Remove="ClientApp\src\app\views\authentication-module\authentication-startup.service.ts" />
@@ -52,12 +52,13 @@
     <None Remove="ClientApp\src\app\preload-strategy.ts" />
     <None Remove="ClientApp\src\app\shared-module\SharedSampleService.ts" />
     <None Remove="ClientApp\src\main.server.ts" />
+    <None Remove="ClientApp\src\testing\router-link-directive-stub.ts" />
     <None Remove="NodeJSServer\server-typescript.ts" />
     <None Remove="NodeJSServer\server.js" />
   </ItemGroup>
 
   <ItemGroup>
-    <TypeScriptCompile Include="ClientApp\testing\file.ts" />
+    <TypeScriptCompile Include="ClientApp\src\testing\activated-route-stub.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\app-routing.module.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\app.server.module.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\views\authentication-module\components\authorization-component\authorization.component.ts" />
@@ -80,6 +81,7 @@
     <TypeScriptCompile Include="ClientApp\src\app\preload-strategy.ts" />
     <TypeScriptCompile Include="ClientApp\src\app\shared-module\SharedSampleService.ts" />
     <TypeScriptCompile Include="ClientApp\src\main.server.ts" />
+    <TypeScriptCompile Include="ClientApp\src\testing\router-link-directive-stub.ts" />
     <TypeScriptCompile Include="NodeJSServer\server.js" />
     <TypeScriptCompile Include="ClientApp\server.ts" />
   </ItemGroup>

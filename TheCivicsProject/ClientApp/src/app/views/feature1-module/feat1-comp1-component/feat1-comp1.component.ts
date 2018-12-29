@@ -18,10 +18,10 @@ export class Feat1Comp1Component implements OnInit {
   ) {
   }
 
-  data: any;
+    data: any;
 
   ngOnInit() {
-    this.data = this.activatedRoute.snapshot.data;
+    //this.data = this.activatedRoute.snapshot.data;
   }
 
   public get SampleServiceString(): string {
@@ -29,7 +29,7 @@ export class Feat1Comp1Component implements OnInit {
   }
 
   public get SampleResolverServiceString(): string {
-    return this.data.message;
+      return ''; //this.data.message;
   }
 
 }

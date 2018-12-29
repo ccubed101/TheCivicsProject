@@ -17,6 +17,7 @@ import { FetchDataComponent } from './fetch-data/fetch-data.component';
 import { CoreModule } from './core-module/core.module';
 import { SharedModule } from './shared-module/shared.module';
 import { MenuComponent } from './menu/menu.component';
+import { HighlightDirective } from './directives/highlight.directive';
 
 @NgModule({
     declarations: [
@@ -26,6 +27,7 @@ import { MenuComponent } from './menu/menu.component';
         CounterComponent,
         FetchDataComponent,
         MenuComponent,
+        HighlightDirective,
     ],
     imports: [
         BrowserModule.withServerTransition({ appId: 'tcp-universal' }),     // Angular Universal.
