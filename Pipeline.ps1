@@ -42,7 +42,7 @@ docker run --rm -v $currentworkingdirectory":c:\project" --name tcp-unit-tests t
 Write-host ('PS $' + 'pathtoouputfile = "docker\output\unit-tests-output.txt"')
 $PathTOuputFile = "docker\output\unit-tests-output.txt"
 
-find /c "SUCCESS" $PathTOuputFile
+find /c "FAILED" $PathTOuputFile
 
 if ($lastexitcode -ne 0) {
 	Write-host "PS notepad $pathtoouputfile"
