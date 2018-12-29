@@ -19,13 +19,13 @@ if ($lastexitcode -ne 0) {
     exit
 } 
 
-#docker run --rm -v $currentworkingdirectory":c:\project" --name tcp-unit-tests tcp-unit-tests-image:1.0.0
-#
-#$pathtoouputfile = "docker\output\unit-tests-output.txt"
-#
-#find /c "failed" $pathtoouputfile
-#
-#if ($lastexitcode -eq 0) {
-#    notepad $pathtoouputfile
-#    exit
-#} 
+docker run --rm -v $currentworkingdirectory":c:\project" --name tcp-unit-tests tcp-unit-tests-image:1.0.0
+
+$pathtoouputfile = "docker\output\unit-tests-output.txt"
+
+find /c "SUCCESS" $pathtoouputfile
+
+if ($lastexitcode -ne 0) {
+    notepad $pathtoouputfile
+    exit
+} 
