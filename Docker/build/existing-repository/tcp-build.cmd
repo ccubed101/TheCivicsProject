@@ -1,11 +1,19 @@
+ECHO OFF
+ECHO
+ECHO ---------- tcp-build.cmd ----------
+ECHO
+
 REM This batch file should be copied into the tcp-build image when the tcp-build image is built.
 REM This batch file should be executed immdiately after the tcp-build image is run.
 
 REM Navigate to the docker volumne that is mapped to the directory on disk that contains all the pipelines.
+ECHO cd project-root
 cd project-root
-
+ECHO
 REM Setup for Git operations by telling Git who you are.  (This may, or may not be machine or developer dependent.)
+ECHO git config --global user.name ccubed101
 git config --global user.name ccubed101
+ECHO git config --global user.email ccubed101@gmail.com
 git config --global user.email ccubed101@gmail.com
 
 REM if exist TheCivicsProject (
@@ -14,6 +22,8 @@ REM if exist TheCivicsProject (
 	REM cd the-civics-project
 	
 	REM Update local repository from remote GitHub repository.
+	ECHO
+	ECHO git pull https://github.com/ccubed101/TheCivicsProject master
 	git pull https://github.com/ccubed101/TheCivicsProject master
 	
 REM ) else (
@@ -34,5 +44,9 @@ REM ) else (
 REM )
 
 REM Build the application
+ECHO 
+ECHO del Docker\output\build-output.txt
 del Docker\output\build-output.txt
+ECHO
+ECHO dotnet build -v n -c Debug TheCivicsProject.sln
 dotnet build -v n -c Debug TheCivicsProject.sln > Docker\output\build-output.txt

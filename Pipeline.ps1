@@ -1,31 +1,52 @@
-param([String]$configuration="Debug")
+param([String]$configuration="Debug")			# Has to be the first line.
+
+Write-host ---------- $MyInvocation.MyCommand.Name "("$MyInvocation.MyCommand.Path")" ----------
+
+Write-host ('PS param([String]$' + 'configuration="Debug")')
+Write-host ("   ($" + "configuration = $configuration)")
+
+Write-host ("PS $" + "CurrentWorkingDirectory = Convert-Path .")
 
 $CurrentWorkingDirectory = Convert-Path .
+
+Write-host ("   ($" + "CurrentWorkingDirectory = " + $CurrentWorkingDirectory + ")")
 
 # Need the path to the directory that contains this script file (which must be in the project root directory).
 # The following works in PowerShell v3 only.
 #$PathToProjectRoot = $PSScriptRoot
 # The following works in PowerShell v2 and v3.
+Write-host ("PS $" + "PathToProjectRoot = Split-Path -Parent -Path $" + "MyInvocation.MyCommand.Definition")
 $PathToProjectRoot = Split-Path -Parent -Path $MyInvocation.MyCommand.Definition
+Write-host ("   ($" + "PathToProjectRoot = $PathToProjectRoot)")
 
+Write-host "docker run --rm -v $currentworkingdirectory":c:\project-root" --name tcp-build tcp-build-image:1.0.0"
 docker run --rm -v $currentworkingdirectory":c:\project-root" --name tcp-build tcp-build-image:1.0.0
 
-$pathtoouputfile = "docker\output\build-output.txt"
+Write-host ('PS $' + 'pathtoouputfile = "docker\output\build-output.txt"')
+$PathTOuputFile = "docker\output\build-output.txt"
 
-find /c "Build succeeded." $pathtoouputfile
+Write-host 'find /c "Build succeeded." $pathtoouputfile'
+find /c "Build succeeded." $PathTOuputFile
+
 
 if ($lastexitcode -ne 0) {
-    notepad $pathtoouputfile
+	Write-host "PS notepad $pathtoouputfile"
+    notepad $PathTOuputFile
+	Write-host "PS exit"
     exit
 } 
 
+Write-host "docker run --rm -v $currentworkingdirectory":c:\project" --name tcp-unit-tests tcp-unit-tests-image:1.0.0"
 docker run --rm -v $currentworkingdirectory":c:\project" --name tcp-unit-tests tcp-unit-tests-image:1.0.0
 
-$pathtoouputfile = "docker\output\unit-tests-output.txt"
+Write-host ('PS $' + 'pathtoouputfile = "docker\output\unit-tests-output.txt"')
+$PathTOuputFile = "docker\output\unit-tests-output.txt"
 
-find /c "SUCCESS" $pathtoouputfile
+find /c "SUCCESS" $PathTOuputFile
 
 if ($lastexitcode -ne 0) {
-    notepad $pathtoouputfile
+	Write-host "PS notepad $pathtoouputfile"
+    notepad $PathTOuputFile
+	Write-host "PS exit"
     exit
 } 
